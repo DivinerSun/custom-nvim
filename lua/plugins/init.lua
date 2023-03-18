@@ -49,4 +49,51 @@ return {
 			require("config.cmp")
 		end,
 	},
+	-- 代码片段
+	{
+		"L3MON4D3/LuaSnip",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+			config = function()
+				require("luasnip.loaders.from_vscode").lazy_load()
+			end,
+		},
+		opts = {
+			history = true,
+			delete_check_events = "TextChanged",
+		},
+    keys = {
+      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+    },
+	},
+	-- LSP
+	{
+		"neovim/nvim-lspconfig",
+		event = "BufWinEnter",
+		config = function()
+			require("config.lsp")
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		lazy = true,
+	},
+	{
+		"williamboman/mason.nvim",
+		event = "VeryLazy",
+		cmd = {
+			"Mason",
+			"MasonInstall",
+			"MasonUninstall",
+			"MasonUninstallAll",
+			"MasonLog",
+		},
+		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		init = function()
+			vim.tbl_map(function(plugin)
+				pcall(require, plugin)
+			end, { "lspconfig", "null-ls" })
+		end,
+	},
 }
