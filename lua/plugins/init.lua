@@ -96,4 +96,31 @@ return {
 			end, { "lspconfig", "null-ls" })
 		end,
 	},
+	-- 格式化/代码lint
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"RRethy/vim-illuminate",
+		event = "VeryLazy",
+	},
+	{
+		"jayp0521/mason-null-ls.nvim",
+		dependencies = "jose-elias-alvarez/null-ls.nvim",
+		event = "BufRead",
+		opts = function()
+			require("config.mason-null-ls")
+		end,
+	},
+	{ "williamboman/nvim-lsp-installer", event = "VeryLazy" },
+	-- auto pairs
+	{
+		"windwp/nvim-autopairs",
+		dependencies = "hrsh7th/nvim-cmp",
+		event = "VeryLazy",
+		init = function()
+			require("config.autopairs")
+		end,
+	},
 }
