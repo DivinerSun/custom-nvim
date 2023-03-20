@@ -351,4 +351,12 @@ return {
 			require("colorizer").setup({})
 		end,
 	},
+	-- 滚动插件
+	{
+		"karb94/neoscroll.nvim",
+		event = "BufRead",
+		config = function()
+			require("neoscroll").setup({})
+		end,
+	},
 }
