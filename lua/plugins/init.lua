@@ -343,4 +343,12 @@ return {
 			require("noice").setup({})
 		end,
 	},
+	-- 颜色插件
+	{
+		"NvChad/nvim-colorizer.lua",
+		event = "BufRead",
+		config = function()
+			require("colorizer").setup({})
+		end,
+	},
 }

@@ -10,6 +10,8 @@ local servers = {
 	"emmet_ls",
 	"intelephense",
 	"marksman",
+	"tailwindcss",
+	"volar",
 }
 
 local settings = {
