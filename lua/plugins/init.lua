@@ -302,4 +302,16 @@ return {
 			require("config.gitsigns")
 		end,
 	},
+	-- Code Runner插件
+	{
+		"CRAG666/code_runner.nvim",
+		event = "VeryLazy",
+		dependencies = "nvim-lua/plenary.nvim",
+		cmd = { "RunCode", "RunFile", "RunProject", "RunClose" },
+		config = function()
+			require("config.coderunner")
+		end,
+	},
+	-- 统计启动时间
+	{ "dstein64/vim-startuptime", cmd = "StartupTime", event = "VeryLazy" },
 }
