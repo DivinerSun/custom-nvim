@@ -71,7 +71,8 @@ local branch = {
 
 local location = {
 	"location",
-	padding = 0,
+	padding = 1,
+	color = { bg = "#FFCC99" },
 }
 
 -- cool function for progress
@@ -202,11 +203,9 @@ lualine.setup({
 		lualine_a = { branch },
 		lualine_b = { mode, "filesize" },
 		lualine_c = { diagnostics, lsp_info },
-		-- lualine_c = { file_name, lsp_info },
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
-		lualine_z = { progress },
+		lualine_z = { { progress, color = { fg = "#FF99CC" } } },
 	},
 	inactive_sections = {
 		lualine_a = {},

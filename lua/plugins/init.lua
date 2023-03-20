@@ -211,4 +211,22 @@ return {
 			require("config.lualine")
 		end,
 	},
+	-- 文件树
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		lazy = false,
+		event = "BufWinEnter",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+		cmd = {
+			"Neotree",
+		},
+		init = function()
+			require("config.neotree")
+		end,
+	},
 }
