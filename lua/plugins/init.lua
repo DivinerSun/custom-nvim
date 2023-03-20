@@ -283,4 +283,13 @@ return {
 			require("windows").setup({})
 		end,
 	},
+	-- nvim内部终端
+	{
+		"akinsho/toggleterm.nvim",
+		cmd = "Toggleterm",
+		event = "BufWinEnter",
+		init = function()
+			require("config.toggleterm")
+		end,
+	},
 }

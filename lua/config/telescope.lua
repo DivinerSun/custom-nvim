@@ -3,6 +3,8 @@ if not status_ok then
 	return
 end
 
+local icons = require("config.icons")
+
 local actions = require("telescope.actions")
 
 vim.g.theme_switcher_loaded = true
@@ -19,8 +21,8 @@ local options = {
 			"--column",
 			"--smart-case",
 		},
-		prompt_prefix = "   ",
-		selection_caret = " ",
+		prompt_prefix = icons.ui.FindFile .. " ",
+		selection_caret = icons.ui.Forward .. " ",
 		entry_prefix = "  ",
 		initial_mode = "insert",
 		selection_strategy = "reset",
@@ -69,6 +71,7 @@ local options = {
 		live_grep = {
 			--@usage don't include the filename in the search results
 			only_sort_text = true,
+			prompt_prefix = icons.ui.FindText .. " ",
 		},
 		grep_string = {
 			only_sort_text = true,
