@@ -245,6 +245,16 @@ return {
 			require("config.winbar")
 		end,
 	},
+	-- Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
+		dependencies = { { "nvim-lua/plenary.nvim" } },
+		cmd = "Telescope",
+		init = function()
+			require("config.telescope")
+		end,
+	},
 	-- 快捷键映射
 	{
 		"folke/which-key.nvim",
