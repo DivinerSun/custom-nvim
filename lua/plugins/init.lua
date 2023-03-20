@@ -292,4 +292,14 @@ return {
 			require("config.toggleterm")
 		end,
 	},
+	-- git插件
+	{
+		"lewis6991/gitsigns.nvim",
+		enabled = vim.fn.executable("git") == 1,
+		ft = "gitcommit",
+		event = "VeryLazy",
+		config = function()
+			require("config.gitsigns")
+		end,
+	},
 }
