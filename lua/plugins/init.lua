@@ -44,6 +44,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lua",
 		},
 		config = function()
 			require("config.cmp")
@@ -142,6 +143,22 @@ return {
 		event = "InsertEnter",
 		init = function()
 			require("config.comment")
+		end,
+	},
+	-- 代码缩进
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "BufRead",
+		init = function()
+			require("config.indent")
+		end,
+	},
+	-- 加载性能加速
+	{
+		"lewis6991/impatient.nvim",
+		event = "VeryLazy",
+		init = function()
+			require("impatient").enable_profile()
 		end,
 	},
 }
