@@ -235,4 +235,14 @@ return {
 			require("config.neotree")
 		end,
 	},
+	-- 文件顶部面包屑
+	{
+		"SmiteshP/nvim-navic",
+		dependencies = "neovim/nvim-lspconfig",
+		event = "BufRead",
+		config = function()
+			require("config.breadcrumb")
+			require("config.winbar")
+		end,
+	},
 }
