@@ -1,5 +1,5 @@
 return {
-  -- 核心插件 (neovim lua函数库)
+	-- 核心插件 (neovim lua函数库)
 	{ "nvim-lua/plenary.nvim", event = "VeryLazy" },
 	-- 主题插件
 	{
@@ -62,10 +62,22 @@ return {
 			history = true,
 			delete_check_events = "TextChanged",
 		},
-    keys = {
-      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-    },
+		keys = {
+			{
+				"<tab>",
+				function()
+					require("luasnip").jump(1)
+				end,
+				mode = "s",
+			},
+			{
+				"<s-tab>",
+				function()
+					require("luasnip").jump(-1)
+				end,
+				mode = { "i", "s" },
+			},
+		},
 	},
 	-- LSP
 	{
@@ -121,6 +133,15 @@ return {
 		event = "VeryLazy",
 		init = function()
 			require("config.autopairs")
+		end,
+	},
+	-- 注释插件
+	{ "JoosepAlviste/nvim-ts-context-commentstring" },
+	{
+		"numToStr/Comment.nvim",
+		event = "InsertEnter",
+		init = function()
+			require("config.comment")
 		end,
 	},
 }
