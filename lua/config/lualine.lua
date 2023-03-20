@@ -147,9 +147,9 @@ local lsp_info = {
 		if next(buf_clients) == nil then
 			-- TODO: clean up this if statement
 			if type(msg) == "boolean" or #msg == 0 then
-				return "LS Inactive"
+				return "[ LS Inactive ]"
 			end
-			return msg
+			return "[ " .. msg .. " ]"
 		end
 		-- add client
 		for _, client in pairs(buf_clients) do
@@ -202,8 +202,8 @@ lualine.setup({
 	sections = {
 		lualine_a = { branch },
 		lualine_b = { mode, "filesize" },
-		lualine_c = { diagnostics, lsp_info },
-		lualine_x = { diff, spaces, "encoding", filetype },
+		lualine_c = { diagnostics, diff },
+		lualine_x = { lsp_info, spaces, "encoding", filetype },
 		lualine_y = { location },
 		lualine_z = { { progress, color = { fg = "#FF99CC" } } },
 	},

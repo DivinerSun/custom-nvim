@@ -205,11 +205,17 @@ return {
 	-- 底部状态栏
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
 		event = "BufWinEnter",
 		opts = function()
 			require("config.lualine")
 		end,
+	},
+	-- 顶部Tab栏
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons", "famiu/bufdelete.nvim" },
+		event = "VeryLazy",
 	},
 	-- 文件树
 	{
@@ -219,7 +225,7 @@ return {
 		event = "BufWinEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"kyazdani42/nvim-web-devicons",
+			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
 		cmd = {
