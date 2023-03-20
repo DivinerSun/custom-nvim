@@ -314,4 +314,33 @@ return {
 	},
 	-- 统计启动时间
 	{ "dstein64/vim-startuptime", cmd = "StartupTime", event = "VeryLazy" },
+	-- 通知弹窗
+	{
+		"rcarriga/nvim-notify",
+		event = "BufRead",
+		config = function()
+			local notify = require("notify")
+			notify.setup({ background_colour = "#000000" })
+			vim.notify = notify.notify
+		end,
+	},
+	-- 输入弹窗
+	{
+		"stevearc/dressing.nvim",
+		event = "BufWinEnter",
+		config = function()
+			require("config.dressing")
+		end,
+	},
+	{
+		"folke/noice.nvim",
+		event = "BufWinEnter",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("noice").setup({})
+		end,
+	},
 }
