@@ -137,7 +137,7 @@ end
 local lsp_info = {
 	function()
 		--local msg = "No Active Lsp"
-		local msg = "LS Inactive"
+		local msg = "[ LS Inactive ]"
 		-- local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 		local buf_ft = vim.bo.filetype
 		local clients = vim.lsp.get_active_clients()
@@ -149,7 +149,7 @@ local lsp_info = {
 			if type(msg) == "boolean" or #msg == 0 then
 				return "[ LS Inactive ]"
 			end
-			return "[ " .. msg .. " ]"
+			return msg
 		end
 		-- add client
 		for _, client in pairs(buf_clients) do
@@ -166,7 +166,7 @@ local lsp_info = {
 		-- decomple
 		local unique_client_names = vim.fn.uniq(buf_client_names)
 		local msg = table.concat(unique_client_names, ", ")
-		return msg
+		return "[ " .. msg .. " ]"
 	end,
 	--icon = " ",
 	icon = icons.ui.Gear .. "",

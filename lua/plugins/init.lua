@@ -245,4 +245,32 @@ return {
 			require("config.winbar")
 		end,
 	},
+	-- 快捷键映射
+	{
+		"folke/which-key.nvim",
+		event = "BufWinEnter",
+		init = function()
+			require("config.whichkey")
+		end,
+	},
+	-- 调整窗口大小(手动)
+	{
+		"mrjones2014/smart-splits.nvim",
+		event = "BufWinEnter",
+		config = function()
+			require("config.smartsplit")
+		end,
+	},
+	-- 自动调整窗口大小
+	{
+		"anuvyklack/windows.nvim",
+		event = "BufWinEnter",
+		dependencies = {
+			"anuvyklack/middleclass",
+			"anuvyklack/animation.nvim",
+		},
+		config = function()
+			require("windows").setup({})
+		end,
+	},
 }
