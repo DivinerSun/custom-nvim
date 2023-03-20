@@ -202,4 +202,13 @@ return {
 			require("config.alpha")
 		end,
 	},
+	-- 底部状态栏
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+		event = "BufWinEnter",
+		opts = function()
+			require("config.lualine")
+		end,
+	},
 }
