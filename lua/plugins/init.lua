@@ -35,6 +35,15 @@ return {
 			require("config.treesitter")
 		end,
 	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = "VeryLazy",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		init = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
+	{ "p00f/nvim-ts-rainbow", event = "BufRead", dependencies = "nvim-treesitter/nvim-treesitter" },
 	-- 代码补全
 	{
 		"hrsh7th/nvim-cmp",
@@ -159,6 +168,30 @@ return {
 		event = "VeryLazy",
 		init = function()
 			require("impatient").enable_profile()
+		end,
+	},
+	-- 代码调试
+	{
+		"mfussenegger/nvim-dap",
+		event = "BufWinEnter",
+		enabled = vim.fn.has("win32") == 0,
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		event = "BufWinEnter",
+		dependencies = "mfussenegger/nvim-dap",
+		enabled = vim.fn.has("win32") == 0,
+		config = function()
+			require("config.dapui")
+		end,
+	},
+	{
+		"jayp0521/mason-nvim-dap.nvim",
+		event = "BufWinEnter",
+		dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap" },
+		enabled = vim.fn.has("win32") == 0,
+		init = function()
+			require("config.mason-dap")
 		end,
 	},
 }
