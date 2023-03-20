@@ -194,4 +194,12 @@ return {
 			require("config.mason-dap")
 		end,
 	},
+	-- nvim启动台
+	{
+		"goolord/alpha-nvim",
+		event = "BufWinEnter",
+		config = function()
+			require("config.alpha")
+		end,
+	},
 }
