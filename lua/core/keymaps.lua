@@ -35,6 +35,7 @@ keymap("v", "<C-k>", "5k", opts)
 
 keymap("i", "jk", "<ESC>", opts)
 keymap("i", "kj", "<ESC>", opts)
+keymap("i", "jj", "<ESC>", opts)
 keymap("i", "kk", "<ESC>o", opts)
 
 -- Navigate buffers
@@ -96,6 +97,11 @@ local map = function(mode, lhs, rhs, desc)
 	end
 	vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc, buffer = bufnr, noremap = true })
 end
+
+if pcall(require, "lsp_lines") then
+	keymap("n", "<M-v>", "<cmd>lua require'lsp_lines'.toggle()<CR>", opts)
+end
+
 -- if pcall(require, "dap") then
 -- modified function keys found with `showkey -a` in the terminal to get key code
 -- run `nvim -V3log +quit` and search through the "Terminal info" in the `log` file for the correct keyname

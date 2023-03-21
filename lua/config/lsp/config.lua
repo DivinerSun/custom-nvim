@@ -7,7 +7,9 @@ local lspconfig = require("lspconfig")
 
 -- local servers = { "jsonls", "sumneko_lua","html","cssls","tsserver"}
 -- local servers = { "jdtls", "yamlls" }
-local servers = {}
+local servers = {
+	"dartls",
+}
 
 lsp_installer.setup({
 	ensure_installed = servers,

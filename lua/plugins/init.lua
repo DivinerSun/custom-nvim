@@ -54,6 +54,7 @@ return {
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
+			{ "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
 		},
 		config = function()
 			require("config.cmp")
@@ -348,7 +349,11 @@ return {
 		"NvChad/nvim-colorizer.lua",
 		event = "BufRead",
 		config = function()
-			require("colorizer").setup({})
+			require("colorizer").setup({
+				user_default_options = {
+					tailwind = true,
+				},
+			})
 		end,
 	},
 	-- 滚动插件
@@ -425,6 +430,50 @@ return {
 			vim.keymap.set("i", "<c-x>", function()
 				return vim.fn["codeium#Clear"]()
 			end, { expr = true })
+		end,
+	},
+	-- Flutter Tools
+	{
+		"akinsho/flutter-tools.nvim",
+		dependencies = { "williamboman/mason-lspconfig.nvim", "nvim-lua/plenary.nvim" },
+		event = "BufRead",
+		config = function()
+			require("flutter-tools").setup({
+				server = {
+					color = {
+						enabled = true,
+					},
+					settings = {
+						showTodos = true,
+						completeFunctionCalls = true,
+					},
+					on_attach = require("config.lsp.handlers").on_attach,
+					capabilities = {
+						require("config.lsp.handlers").capabilities,
+					},
+				},
+			})
+		end,
+	},
+	-- LSP Lines
+	{
+		"ErichDonGubler/lsp_lines.nvim",
+		event = "VimEnter",
+		config = function()
+			require("lsp_lines").setup()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "*" },
+				callback = function()
+					local exclude_ft = {
+						"lazy",
+					}
+					if vim.tbl_contains(exclude_ft, vim.o.filetype) then
+						vim.diagnostic.config({ virtual_lines = false })
+					else
+						vim.diagnostic.config({ virtual_lines = true })
+					end
+				end,
+			})
 		end,
 	},
 }

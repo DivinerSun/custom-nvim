@@ -38,7 +38,11 @@ if not lspconfig_status_ok then
 	return
 end
 
-local opts = {}
+local opts = {
+	servers = {
+		tailwindcss = {},
+	},
+}
 
 for _, server in pairs(servers) do
 	opts = {
