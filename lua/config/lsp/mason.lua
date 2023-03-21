@@ -12,6 +12,9 @@ local servers = {
 	"marksman",
 	"tailwindcss",
 	"volar",
+	"gopls",
+	"golangci_lint_ls",
+	"rust_analyzer",
 }
 
 local settings = {

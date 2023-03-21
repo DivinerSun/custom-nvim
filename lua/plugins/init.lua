@@ -359,4 +359,52 @@ return {
 			require("neoscroll").setup({})
 		end,
 	},
+	-- Golang配置
+	{
+		"olexsmir/gopher.nvim",
+		config = function()
+			require("gopher").setup({
+				commands = {
+					go = "go",
+					gomodifytags = "gomodifytags",
+					gotests = "gotests",
+					impl = "impl",
+					iferr = "iferr",
+				},
+			})
+		end,
+	},
+	{
+		"leoluz/nvim-dap-go",
+		config = function()
+			require("dap-go").setup()
+		end,
+	},
+	-- Rust配置
+	{
+		"simrat39/rust-tools.nvim",
+		event = "BufRead",
+		dependencies = {
+			"mason-lspconfig.nvim",
+			{
+				"saecki/crates.nvim",
+				tag = "v0.3.0",
+				dependencies = { "nvim-lua/plenary.nvim" },
+				config = function()
+					require("crates").setup({
+						null_ls = {
+							enabled = true,
+							name = "crates.nvim",
+						},
+						popup = {
+							border = "rounded",
+						},
+					})
+				end,
+			},
+		},
+		config = function()
+			require("config.rust")
+		end,
+	},
 }
