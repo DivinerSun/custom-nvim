@@ -54,7 +54,14 @@ return {
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
-			{ "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+			{
+				"roobert/tailwindcss-colorizer-cmp.nvim",
+				config = function()
+					require("tailwindcss-colorizer-cmp").setup({
+						color_square_width = 2,
+					})
+				end,
+			},
 		},
 		config = function()
 			require("config.cmp")
