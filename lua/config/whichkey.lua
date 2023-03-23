@@ -145,6 +145,7 @@ local mappings = {
 	},
 	[";"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
 	["v"] = { "<cmd>vsplit<CR>", "Vertical Split" },
+	["z"] = { "<cmd>ZenMode<CR>", "Zen Mode" },
 	-- ["m"] = {
 	-- 	name = "Markdown",
 	-- 	p = { "<cmd>MarkdownPreview<cr>", "Preview" },
@@ -396,34 +397,57 @@ local mappings = {
 	},
 }
 
-local rust_mappings = {
-	["C"] = {
-		name = "Rust",
-		r = { "<cmd>RustRunnables<Cr>", "Runnables" },
-		t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
-		m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
-		c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
-		p = { "<cmd>RustParentModule<Cr>", "Parent Module" },
-		d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
-		v = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" },
-		R = {
-			"<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
-			"Reload Workspace",
-		},
-		o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
-		y = { "<cmd>lua require'crates'.open_repository()<cr>", "[crates] open repository" },
-		P = { "<cmd>lua require'crates'.show_popup()<cr>", "[crates] show popup" },
-		i = { "<cmd>lua require'crates'.show_crate_popup()<cr>", "[crates] show info" },
-		f = { "<cmd>lua require'crates'.show_features_popup()<cr>", "[crates] show features" },
-		D = { "<cmd>lua require'crates'.show_dependencies_popup()<cr>", "[crates] show dependencies" },
-	},
-}
-
-local status_ok = pcall(require, "rust-tools")
-if status_ok then
-	which_key.register(rust_mappings, opts)
-end
-
 which_key.setup(setup)
 which_key.register(mappings, opts)
 which_key.register(mappings2, opts2)
+--
+-- local js_ts_mappings = {
+-- 	C = {
+-- 		name = "Typescript",
+-- 		i = { "<cmd>TypescriptAddMissingImports<Cr>", "AddMissingImports" },
+-- 		o = { "<cmd>TypescriptOrganizeImports<cr>", "OrganizeImports" },
+-- 		u = { "<cmd>TypescriptRemoveUnused<Cr>", "RemoveUnused" },
+-- 		r = { "<cmd>TypescriptRenameFile<Cr>", "RenameFile" },
+-- 		f = { "<cmd>TypescriptFixAll<Cr>", "FixAll" },
+-- 		g = { "<cmd>TypescriptGoToSourceDefinition<Cr>", "GoToSourceDefinition" },
+-- 	},
+-- }
+-- local go_mappings = {
+-- 	C = {
+-- 		name = "Go",
+-- 		i = { "<cmd>GoInstallDeps<Cr>", "Install Go Dependencies" },
+-- 		f = { "<cmd>GoMod tidy<cr>", "Tidy" },
+-- 		a = { "<cmd>GoTestAdd<Cr>", "Add Test" },
+-- 		A = { "<cmd>GoTestsAll<Cr>", "Add All Tests" },
+-- 		e = { "<cmd>GoTestsExp<Cr>", "Add Exported Tests" },
+-- 		g = { "<cmd>GoGenerate<Cr>", "Go Generate" },
+-- 		G = { "<cmd>GoGenerate %<Cr>", "Go Generate File" },
+-- 		c = { "<cmd>GoCmt<Cr>", "Generate Comment" },
+-- 		t = { "<cmd>lua require('dap-go').debug_test()<cr>", "Debug Test" },
+-- 	},
+-- }
+-- local rust_mappings = {
+-- 	C = {
+-- 		name = "Rust",
+-- 		r = { "<cmd>RustRunnables<Cr>", "Runnables" },
+-- 		t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
+-- 		m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
+-- 		c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
+-- 		p = { "<cmd>RustParentModule<Cr>", "Parent Module" },
+-- 		d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
+-- 		v = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" },
+-- 		R = {
+-- 			"<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+-- 			"Reload Workspace",
+-- 		},
+-- 		o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
+-- 		y = { "<cmd>lua require'crates'.open_repository()<cr>", "[crates] open repository" },
+-- 		P = { "<cmd>lua require'crates'.show_popup()<cr>", "[crates] show popup" },
+-- 		i = { "<cmd>lua require'crates'.show_crate_popup()<cr>", "[crates] show info" },
+-- 		f = { "<cmd>lua require'crates'.show_features_popup()<cr>", "[crates] show features" },
+-- 		D = { "<cmd>lua require'crates'.show_dependencies_popup()<cr>", "[crates] show dependencies" },
+-- 	},
+-- }
+-- which_key.register(js_ts_mappings, opts)
+-- which_key.register(go_mappings, opts)
+-- which_key.register(rust_mappings, opts)

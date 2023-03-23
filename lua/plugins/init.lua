@@ -54,6 +54,7 @@ return {
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-emoji",
 			{
 				"roobert/tailwindcss-colorizer-cmp.nvim",
 				config = function()
@@ -481,6 +482,18 @@ return {
 					end
 				end,
 			})
+		end,
+	},
+	-- wakatime
+	{
+		"wakatime/vim-wakatime",
+	},
+	-- 禅模式
+	{
+		"folke/zen-mode.nvim",
+		event = "BufWinEnter",
+		config = function()
+			require("zen-mode").setup({})
 		end,
 	},
 }
