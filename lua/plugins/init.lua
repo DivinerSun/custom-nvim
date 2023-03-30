@@ -231,7 +231,8 @@ return {
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
 		lazy = false,
-		event = "BufWinEnter",
+		-- event = "BufWinEnter",
+		event = "VimEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
@@ -494,6 +495,24 @@ return {
 		event = "BufWinEnter",
 		config = function()
 			require("zen-mode").setup({})
+		end,
+	},
+	-- ChatGPT
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "BufWinEnter",
+		cmd = {
+			"ChatGPT",
+			"ChatGPTActAs",
+			"ChatGPTEditWithInstructions",
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function()
+			require("config.gpt")
 		end,
 	},
 }

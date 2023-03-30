@@ -11,6 +11,7 @@ code_runner.setup({
 		typescript = "deno run",
 		javascript = "node $dir/$fileName",
 		go = "cd $dir && go run $fileName",
+		dart = "cd $dir && dart run $fileName",
 		rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
 		-- cpp="gcc $fileName -lstdc++ -o $fileNameWithoutExt && $fileNameWithoutExt"
 		cpp = "g++ $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",

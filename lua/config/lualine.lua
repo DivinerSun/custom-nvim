@@ -72,7 +72,7 @@ local branch = {
 local location = {
 	"location",
 	padding = 1,
-	color = { bg = "#FFCC99" },
+	color = { fg = "#FFFFFF", bg = "#d86079" },
 }
 
 -- cool function for progress
@@ -177,9 +177,9 @@ lualine.setup({
 		icons_enabled = true,
 		theme = "auto",
 		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
 		-- component_separators = { left = "", right = "" },
-		-- section_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		-- component_separators = { left = "", right = "" },
 		-- section_separators = { left = " ", right = " " },
 		-- component_separators = { left = "", right = "" },
@@ -201,9 +201,9 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { branch },
-		lualine_b = { mode, "filesize" },
+		lualine_b = { mode },
 		lualine_c = { diagnostics, diff },
-		lualine_x = { lsp_info, spaces, "encoding", filetype },
+		lualine_x = { lsp_info, spaces, "encoding", filetype, "filesize" },
 		lualine_y = { location },
 		lualine_z = { { progress, color = { fg = "#FF99CC" } } },
 	},
