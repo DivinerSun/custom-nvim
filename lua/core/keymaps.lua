@@ -38,6 +38,8 @@ keymap("i", "kj", "<ESC>", opts)
 keymap("i", "jj", "<ESC>", opts)
 keymap("i", "kk", "<ESC>o", opts)
 
+keymap("n", "<C-s>", ":lua require('config.functions').SaveAll()<CR>", opts) -- 保存所有
+
 -- Navigate buffers
 keymap("n", "<A-l>", ":bnext<CR>", opts)
 keymap("n", "<A-h>", ":bprevious<CR>", opts)
@@ -78,8 +80,8 @@ keymap("n", "<M-Up>", "<cmd>m-2<cr>", opts)
 keymap("i", "<M-Up>", "<cmd>m-2<cr>", opts)
 keymap("n", "<M-j>", "<cmd>m+<cr>", opts)
 keymap("n", "<M-k>", "<cmd>m-2<cr>", opts)
-keymap("i", "<C-s>", "<cmd>w<cr>", opts)
-keymap("n", "<C-s>", "<cmd>wa<cr>", opts)
+-- keymap("i", "<C-s>", "<cmd>w<cr>", opts)
+-- keymap("n", "<C-s>", "<cmd>wa<cr>", opts)
 -- keymap("i", "<C-l>", "<cmd>LiveServer start<cr><cr>", opts)
 keymap("n", "q", "<cmd>q<cr>", opts)
 keymap("x", "<S-Down>", ":'<,'>t'><cr>", opts)

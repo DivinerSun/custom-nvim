@@ -1,5 +1,10 @@
 local M = {}
 
+-- 保存所有
+function M.SaveAll()
+	vim.api.nvim_command(":wa")
+end
+
 function M.smart_quit()
 	local bufnr = vim.api.nvim_get_current_buf()
 	local buf_windows = vim.call("win_findbuf", bufnr)
