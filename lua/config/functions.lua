@@ -2,7 +2,7 @@ local M = {}
 
 -- 保存所有
 function M.SaveAll()
-	vim.api.nvim_command(":wa")
+	vim.api.nvim_command(":wall")
 end
 
 function M.smart_quit()

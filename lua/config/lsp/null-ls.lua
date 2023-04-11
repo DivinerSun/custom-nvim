@@ -17,7 +17,7 @@ null_ls.setup({
 		--formatting.prettier,
 		-- formatting.prettierd,
 		-- formatting.black.with({ extra_args = { "--fast" } }),
-		-- formatting.stylua,
+		formatting.stylua,
 		-- formatting.eslint_d,
 		-- formatting.google_java_format,
 		-- formatting.phpcbf,
