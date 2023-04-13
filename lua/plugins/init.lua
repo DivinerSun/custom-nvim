@@ -500,6 +500,7 @@ return {
 	-- wakatime
 	{
 		"wakatime/vim-wakatime",
+		event = "BufWinEnter",
 	},
 	-- 禅模式
 	{
