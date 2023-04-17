@@ -40,6 +40,9 @@ keymap("i", "kk", "<ESC>o", opts)
 
 keymap("n", "<C-s>", ":lua require('config.functions').SaveAll()<CR>", opts) -- 保存所有
 
+-- NeoAI Toggle
+keymap("n", "<A-a>", ":NeoAIToggle<CR>", opts)
+
 -- Navigate buffers
 keymap("n", "<A-l>", ":bnext<CR>", opts)
 keymap("n", "<A-h>", ":bprevious<CR>", opts)
