@@ -165,8 +165,8 @@ local lsp_info = {
 		vim.list_extend(buf_client_names, supported_linters)
 		-- decomple
 		local unique_client_names = vim.fn.uniq(buf_client_names)
-		local msg = table.concat(unique_client_names, ", ")
-		return "[ " .. msg .. " ]"
+		msg = table.concat(unique_client_names, ", ")
+		return "[" .. msg .. "]"
 	end,
 	--icon = " ",
 	icon = icons.ui.Gear .. "",

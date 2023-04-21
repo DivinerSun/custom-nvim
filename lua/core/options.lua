@@ -37,7 +37,7 @@ local options = {
 	-- minimal number of screen columns either side of cursor if wrap is `false`
 	-- guifont = "monospace:h17", -- the font used in graphical neovim applications
 	-- guifont = "Source_Code_Pro:h17", -- the font used in graphical neovim applications
-	guifont = "Hack_Nerd_Font:h17", -- the font used in graphical neovim applications
+	guifont = "Hack_Nerd_Font:h24", -- the font used in graphical neovim applications
 	whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line            -- which "horizontal" keys are allowed to travel to prev/next line
 }
 

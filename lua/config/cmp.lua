@@ -15,36 +15,65 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+-- colors
+vim.api.nvim_set_hl(0, "MyCursorLine", { bg = "#83a598", bold = true })
+
+vim.api.nvim_set_hl(0, "CmpItemAbbr", { fg = "#d5c4a1" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#83a598" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#83a598" })
+
+vim.api.nvim_set_hl(0, "CmpItemKindClass", { fg = "#fe8019" })
+vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#fb4934" })
+vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = "#98c379" })
+vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#d5c4a1" })
+
+vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#c792ea", italic = true })
+
 --   פּ ﯟ   some other good icons
--- local kind_icons = {
--- 	Text = "",
--- 	Method = "m",
--- 	Function = "",
--- 	Constructor = "",
--- 	Field = "",
--- 	Variable = "",
--- 	Class = "",
--- 	Interface = "",
--- 	Module = "",
--- 	Property = "",
--- 	Unit = "",
--- 	Value = "",
--- 	Enum = "",
--- 	Keyword = "",
--- 	Snippet = "",
--- 	Color = "",
--- 	File = "",
--- 	Reference = "",
--- 	Folder = "",
--- 	EnumMember = "",
--- 	Constant = "",
--- 	Struct = "",
--- 	Event = "",
--- 	Operator = "",
--- 	TypeParameter = "",
--- }
+local kind_icons = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+	Question = "",
+
+	nvim_lsp = "🚀",
+	luasnip = "🔍",
+	buffer = "📝",
+	path = "📁",
+	nvim_lua = "🌙",
+	emoji = "🎉",
+}
 -- find more here: https://www.nerdfonts.com/cheat-sheet
-local new_kind_icon = require("config.icons")
+-- local new_kind_icon = require("config.icons")
+
+local compare = cmp.config.compare
+
+local log = require("plenary.log").new({
+	plugin = "uthman",
+	level = "debug",
+})
 
 cmp.setup({
 	snippet = {
@@ -97,23 +126,6 @@ cmp.setup({
 			"s",
 		}),
 	},
-	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			-- Kind icons
-			-- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			vim_item.kind = string.format("%s", new_kind_icon["kind"][vim_item.kind])
-			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			vim_item.menu = ({
-				nvim_lsp = "(LSP)",
-				luasnip = "(Snippet)",
-				buffer = "(Buffer)",
-				path = "(Path)",
-			})[entry.source.name]
-			-- return vim_item
-			return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
-		end,
-	},
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
@@ -121,6 +133,34 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "nvim_lua" },
 		{ name = "emoji" },
+	},
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			-- Kind icons
+			-- vim_item.kind = string.format("%s %s", (kind_icons[vim_item.kind] or kind_icons.Question), vim_item.kind)
+			local kind = vim_item.kind
+			vim_item.kind = " " .. (kind_icons[kind] or kind_icons.Question)
+
+			local source = entry.source.name
+			-- vim_item.menu = " [" .. kind_icons[source] .. "]"
+			vim_item.menu = "  " .. kind_icons[source]
+
+			vim_item.abbr = vim_item.abbr:match("[^(]+")
+
+			-- 代码提示去重
+			if source == "luasnip" or source == "nvim_lsp" then
+				vim_item.dup = 0
+			end
+
+			local item = entry:get_completion_item()
+			log.debug(item)
+			if item.detail then
+				vim_item.menu = item.detail
+			end
+
+			return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+		end,
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -136,5 +176,27 @@ cmp.setup({
 	experimental = {
 		ghost_text = false,
 		native_menu = false,
+	},
+	sorting = {
+		comparators = {
+			compare.exact,
+			compare.recently_used,
+			-- compare.kind,
+			function(entry1, entry2)
+				-- local kind_mapper = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 }
+				local kind_mapper = require("cmp.types").lsp.CompletionItemKind
+				local kind_score = {
+					Variable = 1,
+					Class = 2,
+					Method = 3,
+					Keyword = 4,
+				}
+				local kind1 = kind_score[kind_mapper[entry1:get_kind()]] or 100
+				local kind2 = kind_score[kind_mapper[entry2:get_kind()]] or 100
+				if kind1 < kind2 then
+					return true
+				end
+			end,
+		},
 	},
 })
