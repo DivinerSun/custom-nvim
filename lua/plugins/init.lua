@@ -456,24 +456,11 @@ return {
 	-- Flutter Tools
 	{
 		"akinsho/flutter-tools.nvim",
-		dependencies = { "williamboman/mason-lspconfig.nvim", "nvim-lua/plenary.nvim" },
+		lazy = false,
+		dependencies = { "nvim-lua/plenary.nvim", "stevearc/dressing.nvim" },
 		event = "BufRead",
 		config = function()
-			require("flutter-tools").setup({
-				server = {
-					color = {
-						enabled = true,
-					},
-					settings = {
-						showTodos = true,
-						completeFunctionCalls = true,
-					},
-					on_attach = require("config.lsp.handlers").on_attach,
-					capabilities = {
-						require("config.lsp.handlers").capabilities,
-					},
-				},
-			})
+			require("config.flutter")
 		end,
 	},
 	-- LSP Lines

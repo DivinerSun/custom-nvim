@@ -180,6 +180,7 @@ cmp.setup({
 	sorting = {
 		comparators = {
 			compare.exact,
+			compare.length,
 			compare.recently_used,
 			-- compare.kind,
 			function(entry1, entry2)

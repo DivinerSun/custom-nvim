@@ -63,7 +63,7 @@ local options = {
 			n = { ["q"] = actions.close },
 		},
 	},
-	extensions_list = { "themes", "terms" },
+	extensions_list = { "themes", "terms", "flutter" },
 	pickers = {
 		find_files = {
 			hidden = true,
