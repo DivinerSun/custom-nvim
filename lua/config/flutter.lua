@@ -24,14 +24,14 @@ FT.setup({
 			require("dap.ext.vscode").load_launchjs()
 		end,
 	},
-	flutter_path = "/Users/diviner/DevTools/flutter/bin/flutter",
+	-- flutter_path = "/Users/diviner/DevTools/flutter/bin/flutter",
 	fvm = true,
 	widget_guides = {
 		enabled = true,
 	},
 	closing_tags = {
 		highlight = "ErrorMsg",
-		prefix = "",
+		prefix = " ",
 		enabled = true,
 	},
 	dev_log = {

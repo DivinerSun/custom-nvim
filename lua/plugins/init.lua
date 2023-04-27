@@ -350,7 +350,7 @@ return {
 			"rcarriga/nvim-notify",
 		},
 		config = function()
-			require("noice").setup({})
+			require("config.noice")
 		end,
 	},
 	-- 颜色插件
