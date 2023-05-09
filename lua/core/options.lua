@@ -48,6 +48,11 @@ end
 -- codeium
 vim.g.codeium_disable_bindings = 1
 
+-- dart
+vim.g.dart_format_on_save = 1
+vim.g.dart_style_guide = 2
+vim.g.lsc_auto_map = true
+
 -- vim.opt.shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
 -- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 vim.opt.shortmess:append("c") -- don't give |ins-completion-menu| messages

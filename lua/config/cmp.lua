@@ -70,11 +70,6 @@ local kind_icons = {
 
 local compare = cmp.config.compare
 
-local log = require("plenary.log").new({
-	plugin = "uthman",
-	level = "debug",
-})
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -154,7 +149,6 @@ cmp.setup({
 			end
 
 			local item = entry:get_completion_item()
-			log.debug(item)
 			if item.detail then
 				vim_item.menu = item.detail
 			end
@@ -179,18 +173,18 @@ cmp.setup({
 	},
 	sorting = {
 		comparators = {
-			compare.exact,
+			-- compare.exact,
 			compare.length,
 			compare.recently_used,
-			-- compare.kind,
+			compare.kind,
 			function(entry1, entry2)
 				-- local kind_mapper = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 }
 				local kind_mapper = require("cmp.types").lsp.CompletionItemKind
 				local kind_score = {
-					Variable = 1,
-					Class = 2,
-					Method = 3,
-					Keyword = 4,
+					Keyword = 1,
+					Method = 2,
+					Class = 3,
+					Variable = 4,
 				}
 				local kind1 = kind_score[kind_mapper[entry1:get_kind()]] or 100
 				local kind2 = kind_score[kind_mapper[entry2:get_kind()]] or 100

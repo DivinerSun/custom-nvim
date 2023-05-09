@@ -453,6 +453,13 @@ return {
 			end, { expr = true })
 		end,
 	},
+	-- Dart
+	{
+		"dart-lang/dart-vim-plugin",
+		dependencies = { "natebosch/vim-lsc", "natebosch/vim-lsc-dart" },
+		event = "BufRead",
+		config = function() end,
+	},
 	-- Flutter Tools
 	{
 		"akinsho/flutter-tools.nvim",
@@ -541,6 +548,16 @@ return {
 		},
 		config = function()
 			require("config.neoai")
+		end,
+	},
+	-- Timer Down
+	{
+		"jackMort/pommodoro-clock.nvim",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("config.clock")
 		end,
 	},
 }

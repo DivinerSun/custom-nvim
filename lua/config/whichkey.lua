@@ -95,6 +95,11 @@ end
 local debug_key = {}
 -- local is_dap = pcall(require, "dap")
 
+-- timer clock
+local function pc(func)
+	return "<Cmd>lua require('pommodoro-clock')." .. func .. "<CR>"
+end
+
 if vim.fn.has("win32") == 0 then
 	debug_key = {
 		name = "Debug",
@@ -394,6 +399,14 @@ local mappings = {
 		p = { "<cmd>Lazy profile<cr>", "Profile" },
 		l = { "<cmd>Lazy log<cr>", "Log" },
 		d = { "<cmd>Lazy debug<cr>", "Debug" },
+	},
+	T = {
+		name = "Timer Down",
+		w = { pc('start("work")'), "Start Pommodoro" },
+		s = { pc('start("short_break")'), "Short Break" },
+		l = { pc('start("long_break")'), "Long Break" },
+		-- p = { pc("toggle_pause()"), "Toggle Pause" },
+		c = { pc("close()"), "Close" },
 	},
 }
 
