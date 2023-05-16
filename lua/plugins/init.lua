@@ -560,4 +560,13 @@ return {
 			require("config.clock")
 		end,
 	},
+	-- TODO Comments
+	{
+		"folke/todo-comments.nvim",
+		event = "BufWinEnter",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("config.todo")
+		end,
+	},
 }

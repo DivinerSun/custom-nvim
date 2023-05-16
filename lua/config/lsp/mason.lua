@@ -16,6 +16,7 @@ local servers = {
 	"golangci_lint_ls",
 	"rust_analyzer",
 	"dartls",
+	"prismals",
 }
 
 local settings = {
