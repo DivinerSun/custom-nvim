@@ -38,7 +38,7 @@ keymap("i", "kj", "<ESC>", opts)
 keymap("i", "jj", "<ESC>", opts)
 keymap("i", "kk", "<ESC>o", opts)
 
-keymap("n", "<C-s>", ":lua require('config.functions').SaveAll()<CR>", opts) -- 保存所有
+-- keymap("n", "<C-s>", ":lua require('config.functions').SaveAll()<CR>", opts) -- 保存所有
 
 -- NeoAI Toggle
 keymap("n", "<A-a>", ":NeoAIToggle<CR>", opts)
