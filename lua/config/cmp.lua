@@ -123,11 +123,12 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
-		{ name = "path" },
 		{ name = "nvim_lua" },
+		{ name = "buffer" },
+		{ name = "crates" },
+		{ name = "path" },
 		{ name = "emoji" },
+		{ name = "luasnip" },
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -176,7 +177,7 @@ cmp.setup({
 			-- compare.exact,
 			compare.length,
 			compare.recently_used,
-			compare.kind,
+			-- compare.kind,
 			function(entry1, entry2)
 				-- local kind_mapper = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 }
 				local kind_mapper = require("cmp.types").lsp.CompletionItemKind

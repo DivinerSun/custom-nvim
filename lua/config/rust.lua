@@ -1,4 +1,5 @@
-local lsp_handlers = require("config.lsp.handlers")
+local on_attach = require("config.lsp.handlers").on_attach
+local capabilities = require("config.lsp.handlers").capabilities
 local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
 local codelldb_adapter = {
 	type = "server",
@@ -48,11 +49,10 @@ rt.setup({
 	},
 	server = {
 		on_attach = function(client, bufnr)
-			lsp_handlers.on_attach(client, bufnr)
-			local rt = require("rust-tools")
+			on_attach(client, bufnr)
 			vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
 		end,
-		capabilities = lsp_handlers.capabilities,
+		capabilities = capabilities,
 		settings = {
 			["rust-analyzer"] = {
 				lens = {

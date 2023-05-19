@@ -388,44 +388,48 @@ return {
 	-- Golang配置
 	{
 		"olexsmir/gopher.nvim",
-		config = function()
-			require("gopher").setup({
-				commands = {
-					go = "go",
-					gomodifytags = "gomodifytags",
-					gotests = "gotests",
-					impl = "impl",
-					iferr = "iferr",
-				},
-			})
+		ft = "go",
+		config = function(_, opts)
+			require("gopher").setup(opts)
+		end,
+		build = function()
+			vim.cmd([[silent! GoInstallDeps]])
 		end,
 	},
 	{
 		"leoluz/nvim-dap-go",
-		config = function()
-			require("dap-go").setup()
+		ft = "go",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"rcarriga/nvim-dap-ui",
+		},
+		config = function(_, opts)
+			require("dap-go").setup(opts)
 		end,
 	},
 	-- Rust配置
 	{
+		"rust-lang/rust.vim",
+		ft = "rust",
+		init = function()
+			vim.g.rustfmt_autosave = 1
+		end,
+	},
+	{
 		"simrat39/rust-tools.nvim",
+		ft = "rust",
 		event = "BufRead",
 		dependencies = {
 			"mason-lspconfig.nvim",
 			{
 				"saecki/crates.nvim",
+				ft = { "rust", "toml" },
 				tag = "v0.3.0",
-				dependencies = { "nvim-lua/plenary.nvim" },
-				config = function()
-					require("crates").setup({
-						null_ls = {
-							enabled = true,
-							name = "crates.nvim",
-						},
-						popup = {
-							border = "rounded",
-						},
-					})
+				dependencies = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" },
+				config = function(_, opts)
+					local crates = require("crates")
+					crates.setup(opts)
+					crates.show()
 				end,
 			},
 		},
