@@ -74,7 +74,7 @@ return {
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
+				require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
 			end,
 		},
 		opts = {
@@ -460,9 +460,13 @@ return {
 	-- Dart
 	{
 		"dart-lang/dart-vim-plugin",
-		dependencies = { "natebosch/vim-lsc", "natebosch/vim-lsc-dart" },
+		-- dependencies = { "natebosch/vim-lsc", "natebosch/vim-lsc-dart" },
 		event = "BufRead",
-		config = function() end,
+		config = function()
+			-- vim.g.dart_format_on_save = 1
+			-- vim.g.dart_style_guide = 2
+			-- vim.g.lsc_auto_map = true
+		end,
 	},
 	-- Flutter Tools
 	{
@@ -474,6 +478,9 @@ return {
 			require("config.flutter")
 		end,
 	},
+	-- Flutter Snippets
+	{ "RobertBrunhage/flutter-riverpod-snippets" },
+	{ "Neevash/awesome-flutter-snippets" },
 	-- LSP Lines
 	{
 		"ErichDonGubler/lsp_lines.nvim",

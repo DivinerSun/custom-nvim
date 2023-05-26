@@ -24,10 +24,10 @@ FT.setup({
 			require("dap.ext.vscode").load_launchjs()
 		end,
 	},
-	-- flutter_path = "/Users/diviner/DevTools/flutter/bin/flutter",
-	fvm = true,
+	flutter_path = "/Users/diviner/fvm/default/bin/flutter",
+	fvm = false,
 	widget_guides = {
-		enabled = true,
+		enabled = false,
 	},
 	closing_tags = {
 		highlight = "ErrorMsg",
@@ -36,7 +36,7 @@ FT.setup({
 	},
 	dev_log = {
 		enabled = true,
-		notify_errors = true,
+		notify_errors = false,
 		open_cmd = "tabedit",
 	},
 	dev_tools = {
