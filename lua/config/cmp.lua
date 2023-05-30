@@ -8,7 +8,7 @@ if not snip_status_ok then
 	return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load({ paths = { "./snippets" } })
+-- require("luasnip/loaders/from_vscode").lazy_load({ paths = { "./snippets" } })
 
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
@@ -129,6 +129,8 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "emoji" },
 		{ name = "luasnip" },
+		{ name = "tailwind" },
+		{ name = "tailwindcss" },
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
