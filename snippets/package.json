@@ -110,6 +110,38 @@
       {
         "language": "dart",
         "path": "./awesome-flutter-snippets/snippets/snippets.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./javascript-snippet/snippets/javascript.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./javascript-snippet/snippets/javascript.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./javascript-snippet/snippets/javascript.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./javascript-snippet/snippets/javascript.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./vscode-react-javascript-snippets/src/snippets/generated.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./vscode-react-javascript-snippets/src/snippets/generated.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./vscode-react-javascript-snippets/src/snippets/generated.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./vscode-react-javascript-snippets/src/snippets/generated.json"
       }
     ]
   }
