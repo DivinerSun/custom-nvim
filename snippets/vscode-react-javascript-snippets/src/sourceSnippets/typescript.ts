@@ -102,7 +102,10 @@ const typescriptReactFunctionalExportComponentOne: TypescriptSnippet = {
   body: [
     "import { FC } from 'react'",
     '',
-    'const ${1:${TM_FILENAME_BASE}}: FC = ({}: Props) => {',
+    'interface ${1:${TM_FILENAME_BASE}}Props {',
+    '}',
+    '',
+    'const ${1:${TM_FILENAME_BASE}}: FC = ({}: ${1:${TM_FILENAME_BASE}}Props) => {',
     '  return (',
     '    <div>${1:first}</div>',
     '  )',
