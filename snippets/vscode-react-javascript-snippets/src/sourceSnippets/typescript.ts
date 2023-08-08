@@ -105,7 +105,7 @@ const typescriptReactFunctionalExportComponentOne: TypescriptSnippet = {
     'interface ${1:${TM_FILENAME_BASE}}Props {',
     '}',
     '',
-    'const ${1:${TM_FILENAME_BASE}}: FC = ({}: ${1:${TM_FILENAME_BASE}}Props) => {',
+    'const ${1:${TM_FILENAME_BASE}}: FC<${1:${TM_FILENAME_BASE}}Props> = ({}) => {',
     '  return (',
     '    <div>${1:first}</div>',
     '  )',
