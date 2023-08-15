@@ -43,7 +43,7 @@ return {
 			require("nvim-ts-autotag").setup()
 		end,
 	},
-	{ "p00f/nvim-ts-rainbow", event = "BufRead", dependencies = "nvim-treesitter/nvim-treesitter" },
+	-- { "p00f/nvim-ts-rainbow", event = "BufRead", dependencies = "nvim-treesitter/nvim-treesitter" },
 	-- 代码补全
 	{
 		"hrsh7th/nvim-cmp",
