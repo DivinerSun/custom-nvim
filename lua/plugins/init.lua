@@ -229,7 +229,7 @@ return {
 	-- 文件树
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
+		-- branch = "v2.x",
 		lazy = false,
 		-- event = "BufWinEnter",
 		event = "VimEnter",

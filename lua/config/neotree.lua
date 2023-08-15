@@ -10,6 +10,7 @@ neo_tree.setup({
 	popup_border_style = "rounded",
 	enable_git_status = true,
 	enable_diagnostics = true,
+	enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
 	open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
 	sort_case_insensitive = false, -- used when sorting files and directories in the tree
 	sort_function = nil, -- use a custom function for sorting files and directories in the tree
@@ -81,7 +82,9 @@ neo_tree.setup({
 			["<cr>"] = "open",
 			["l"] = "open",
 			["<esc>"] = "revert_preview",
+			-- ["<esc>"] = "cancel", -- close preview or floating neo-tree window
 			["P"] = { "toggle_preview", config = { use_float = true } },
+			-- ["l"] = "focus_preview",
 			["S"] = "open_split",
 			["s"] = "open_vsplit",
 			-- ["S"] = "split_with_window_picker",
@@ -150,8 +153,11 @@ neo_tree.setup({
 				--".null-ls_*",
 			},
 		},
-		follow_current_file = false, -- This will find and focus the file in the active buffer every
-		-- time the current file is changed while the tree is open.
+		follow_current_file = {
+			enabled = true, -- This will find and focus the file in the active buffer every time
+			--               -- the current file is changed while the tree is open.
+			leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+		},
 		group_empty_dirs = false, -- when true, empty folders will be grouped together
 		hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
 		-- in whatever position is specified in window.position
@@ -174,11 +180,22 @@ neo_tree.setup({
 				["[g"] = "prev_git_modified",
 				["]g"] = "next_git_modified",
 			},
+			fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
+				["<down>"] = "move_cursor_down",
+				["<C-n>"] = "move_cursor_down",
+				["<up>"] = "move_cursor_up",
+				["<C-p>"] = "move_cursor_up",
+			},
 		},
+
+		commands = {}, -- Add a custom command or override a global one using the same function name
 	},
 	buffers = {
-		follow_current_file = true, -- This will find and focus the file in the active buffer every
-		-- time the current file is changed while the tree is open.
+		follow_current_file = {
+			enabled = true, -- This will find and focus the file in the active buffer every time
+			--              -- the current file is changed while the tree is open.
+			leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+		},
 		group_empty_dirs = true, -- when true, empty folders will be grouped together
 		show_unloaded = true,
 		window = {

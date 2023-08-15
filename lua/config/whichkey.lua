@@ -129,7 +129,7 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Buffers",
 	},
-	["e"] = { "<cmd>NeoTreeFloatToggle<CR>", "Explorer" },
+	["e"] = { "<cmd>Neotree filesystem reveal float toggle<CR>", "Explorer" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
