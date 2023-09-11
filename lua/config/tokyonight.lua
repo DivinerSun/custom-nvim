@@ -32,7 +32,7 @@ tokyonight.setup({
 	--@param colors ColorScheme
 	--on_colors = function(colors) end,
 	on_colors = function(colors)
-		colors.comment = "#f0a1a8"
+		colors.comment = "#FF81D0"
 		colors.fg_gutter = "#813c85"
 	end,
 
