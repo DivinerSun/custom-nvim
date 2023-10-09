@@ -14,7 +14,13 @@ require("nvim-treesitter.configs").setup({
 		max_file_lines = nil,
 	},
 	autotag = { enable = true },
-	incremental_selection = { enable = true },
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			node_incremental = "v",
+			node_decremental = "V",
+		},
+	},
 	indent = { enable = true, disable = { "python", "css" } },
 	autopairs = {
 		enable = true,
