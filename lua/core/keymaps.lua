@@ -38,6 +38,8 @@ keymap("i", "kj", "<ESC>", opts)
 keymap("i", "jj", "<ESC>", opts)
 keymap("i", "kk", "<ESC>o", opts)
 
+keymap("v", "q", "<ESC>", opts)
+
 -- keymap("n", "<C-s>", ":lua require('config.functions').SaveAll()<CR>", opts) -- 保存所有
 
 -- NeoAI Toggle
