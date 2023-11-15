@@ -353,6 +353,14 @@ return {
 			require("config.noice")
 		end,
 	},
+	{
+		"smjonas/inc-rename.nvim",
+		event = "VeryLazy",
+		cmd = { "IncRename" },
+		config = function()
+			require("inc_rename").setup()
+		end,
+	},
 	-- 颜色插件
 	{
 		"NvChad/nvim-colorizer.lua",

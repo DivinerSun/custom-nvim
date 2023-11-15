@@ -24,4 +24,5 @@ noice.setup({
 			help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
 		},
 	},
+	presets = { inc_rename = true },
 })

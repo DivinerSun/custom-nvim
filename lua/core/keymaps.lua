@@ -40,6 +40,9 @@ keymap("i", "kk", "<ESC>o", opts)
 
 keymap("v", "q", "<ESC>", opts)
 
+-- Rename
+vim.keymap.set("n", "<leader>rn", ":IncRename ")
+
 -- keymap("n", "<C-s>", ":lua require('config.functions').SaveAll()<CR>", opts) -- 保存所有
 
 -- NeoAI Toggle

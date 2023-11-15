@@ -194,6 +194,10 @@
       {
         "language": "typescript",
         "path": "./vue-vscode-snippets/snippets/nuxt-config.json"
+      },
+      {
+        "language": "html",
+        "path": "./html/snippets/html.json"
       }
     ]
   }
