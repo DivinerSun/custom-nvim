@@ -486,9 +486,6 @@ return {
 			require("config.flutter")
 		end,
 	},
-	-- Flutter Snippets
-	{ "RobertBrunhage/flutter-riverpod-snippets" },
-	{ "Neevash/awesome-flutter-snippets" },
 	-- LSP Lines
 	{
 		"ErichDonGubler/lsp_lines.nvim",
