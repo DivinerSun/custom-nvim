@@ -585,6 +585,11 @@ return {
 			require("config.todo")
 		end,
 	},
+	-- 多光标
+	{
+		"mg979/vim-visual-multi",
+		event = "BufWinEnter",
+	},
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
